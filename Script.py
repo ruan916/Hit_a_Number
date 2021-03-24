@@ -11,20 +11,21 @@ class TryHitTheNumber:
         self.GenerateRandomNumber()
         self.RequestRandomValue()
         while self.try_again == True:
-            if (self.answer) > self.random_value:
-                print ('Hit a higher number!')
-                self.RequestRandomValue()
-            elif (self.answer) < self.random_value:
+            if int(self.answer) > self.random_value:
                 print ('Hit a lower number!')
                 self.RequestRandomValue()
-            self.try_again = False
-            print ('CONGRATULATIONS! YOU HITTED THE NUMBER!')
+            elif int(self.answer) < self.random_value:
+                print ('Hit a higher number!')
+                self.RequestRandomValue()
+            if int(self.answer) == self.random_value:
+                self.try_again = False
+                print ('CONGRATULATIONS! YOU HITTED THE NUMBER!')
 
     def RequestRandomValue(self):
-        self.answer = int(input('Hit a number between 1-100: '))
+        self.answer = input('Hit a number between 1-100: ')
 
     def GenerateRandomNumber(self):
-        print(random.randint(self.minimum_value, self.maximum_value))
+        self.random_value = random.randint(self.minimum_value, self.maximum_value)
         
 hitnumber = TryHitTheNumber()
 hitnumber.start()
